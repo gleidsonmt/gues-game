@@ -1,0 +1,29 @@
+.wrapper {
+    -fx-fit-to-width: true;
+    -fx-fit-to-height: true;
+}
+
+.card {
+      -fx-effect: dropshadow( gaussian , rgba(0,0,0,.1) , 5, 0 , 0 , 1 );
+      -fx-background-color: white;
+
+    -fx-border-color: #E6E9ED;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+
+    -fx-padding: 10px;
+    -fx-cursor: hand;
+
+    -fx-background-insets: -10px -5px -10px -5px;
+    -fx-border-insets: -10px -5px -10px -5px;
+}
+
+.play-button {
+    -fx-background-color: red;
+    -fx-text-fill: white;
+    -fx-min-height: 50px;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
