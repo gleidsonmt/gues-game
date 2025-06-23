@@ -1,11 +1,15 @@
 package io.github.gleidsonmt.guess_game.responsive;
 
 
+import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
@@ -16,14 +20,9 @@ public class Container<T extends Size> extends StackPane {
     protected Breaker<T> breaker;
     protected Sizer<T> sizer;
 
+    @SuppressWarnings("unchecked")
     public Container() {
-        this.breaker = new Breaker<>();
-        this.sizer = new Sizer<T>(this, (T[]) Break.values()) {
-            @Override
-            public void change(T size) {
-                breaker.doAction(size);
-            }
-        };
+        this((T[]) Break.values());
     }
 
     public Container(T[] values) {
@@ -31,18 +30,17 @@ public class Container<T extends Size> extends StackPane {
         this.sizer = new Sizer<T>(this, values) {
             @Override
             public void change(T size) {
+
                 breaker.doAction(size);
             }
         };
+
+
     }
 
     public void setSizer(Sizer<T> sizer) {
         this.sizer.clear(this);
         this.sizer = sizer;
-    }
-
-    public void setBreaker(Breaker breaker) {
-        this.breaker = breaker;
     }
 
     /**

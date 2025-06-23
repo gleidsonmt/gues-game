@@ -17,6 +17,7 @@ public class Breaker<T extends Size> implements Actionable<T> {
 
     @Override
     public void doAction(T size) {
+        System.out.println("size = " + size);
         List<BreakPoint> p = points.stream().filter(el -> el.getBreaks().contains(size)).toList();
         if (p.isEmpty()) return;
         // Make an action defined by user.

@@ -15,7 +15,6 @@ public class App extends Application {
     @Override
     public void start(Stage stage) {
 
-
         StartGameView startGameView = new StartGameView();
         Scene scene = new Scene(startGameView, 1336, 600);
         scene.getStylesheets().addAll(Assets.getCss("main.css"), Assets.getCss("immersive_scroll.css"));

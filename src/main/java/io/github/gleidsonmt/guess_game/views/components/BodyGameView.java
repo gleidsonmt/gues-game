@@ -1,6 +1,6 @@
 package io.github.gleidsonmt.guess_game.views.components;
 
-import io.github.gleidsonmt.guess_game.responsive.Bootstrap;
+import io.github.gleidsonmt.guess_game.responsive.Break;
 import io.github.gleidsonmt.guess_game.responsive.Container;
 import io.github.gleidsonmt.guess_game.utils.Assets;
 import io.github.gleidsonmt.guess_game.views.StartGameView;
@@ -22,7 +22,7 @@ import java.util.stream.Stream;
 public class BodyGameView extends BorderPane {
 
     private ScrollPane wrapper;
-    private Container<Bootstrap> container = new Container(Bootstrap.values());
+    private Container<Break> container = new Container<>();
     private GridPane grid;
 
     int cols = 0;
@@ -32,7 +32,7 @@ public class BodyGameView extends BorderPane {
 
     public BodyGameView(ObservableList<String> images) {
         init();
-
+        grid.getStyleClass().add("grid");
         images.forEach(el -> {
             String name = el.substring(0, el.lastIndexOf("."));
             CardView cardView = new CardView(name, Assets.getImage(el));
@@ -81,18 +81,13 @@ public class BodyGameView extends BorderPane {
         };
         new Timer().schedule(timerTask, 1000);
 
-//        container.addPoint(_ -> updateGrid(1), Break.MOBILE);
-//        container.addPoint(_ -> updateGrid(2), Break.SM);
-//        container.addPoint(_ -> updateGrid(3), Break.MD, Break.LG);
-//        container.addPoint(_ -> updateGrid(5), Break.XL, Break.XL);
-//        container.addPoint(_ -> updateGrid(10), Break.WIDE);
+        container.addPoint(_ -> updateGrid(3), Break.MOBILE);
+        container.addPoint(_ -> updateGrid(4), Break.SM);
+        container.addPoint(_ -> updateGrid(5), Break.MD, Break.LG);
+        container.addPoint(_ -> updateGrid(6), Break.XL, Break.XL);
+        container.addPoint(_ -> updateGrid(10), Break.WIDE);
 
         container.log();
-//        container.addPoint(_ -> updateGrid(1), Bootstrap.SMALL);
-//        container.addPoint(_ -> updateGrid(2), Break.SM);
-//        container.addPoint(_ -> updateGrid(3), Break.MD, Break.LG);
-//        container.addPoint(_ -> updateGrid(5), Break.XL, Break.XL);
-//        container.addPoint(_ -> updateGrid(10), Break.WIDE);
     }
 
     private void wonGame() {

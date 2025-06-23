@@ -27,19 +27,17 @@ public class GameView extends StackPane {
                          "panda.png monkey.png dog.png tiger.png turtle.png")
                                 .split(" "));
 
-        test();;
+//        test();
+        start();;
         init();
     }
 
     private void start() {
         shuffle();
-        this.getChildren().setAll(bodyGameView);
     }
 
     private void test() {
-        all = FXCollections.observableArrayList();
-        all.addAll( originals);
-        all.addAll( originals);
+
     }
 
     private void shuffle() {
@@ -53,6 +51,10 @@ public class GameView extends StackPane {
     private void init() {
         this.bodyGameView = new BodyGameView(all);
         this.getChildren().setAll(this.bodyGameView);
+
+        all = FXCollections.observableArrayList();
+        all.addAll( originals);
+        all.addAll( originals);
     }
 
 

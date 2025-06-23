@@ -15,6 +15,10 @@ public class Assets {
         return new Image(Objects.requireNonNull(App.class.getResource("img/" + name)).toExternalForm());
     }
 
+    public static Image getImage(String name, double width, double height) {
+        return new Image(Objects.requireNonNull(App.class.getResource("img/" + name)).toExternalForm(), width, height, true,true);
+    }
+
     public static String getCss(String name) {
         return Objects.requireNonNull(App.class.getResource("css/" + name)).toExternalForm();
     }

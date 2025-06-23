@@ -22,7 +22,7 @@ public class CardView extends StackPane {
     private Image avatar;
     private String cardName;
 
-    private double cardWidth = 100;
+    private double cardWidth = 120;
     private double cardHeight = 150;
 
     private boolean cardOpened = true;
@@ -32,7 +32,7 @@ public class CardView extends StackPane {
     public CardView(String cardName, Image image) {
         this.avatar = image;
         this.cardName = cardName;
-        this.imageCard = new ImageCard(image);
+        this.imageCard = new ImageCard(image, cardWidth, cardHeight);
         this.setUserData(cardName);
 
         this.getStyleClass().add("card");
@@ -41,7 +41,7 @@ public class CardView extends StackPane {
 //        this.setMaxSize(200, 300);
         getChildren().add(imageCard);
 
-        this.setRotationAxis(new Point3D(0,20,0));
+        this.setRotationAxis(new Point3D(0,5,0));
 
         this.addEventFilter(MouseEvent.MOUSE_RELEASED, (_) -> {
 //           swap();
@@ -101,9 +101,8 @@ public class CardView extends StackPane {
 
     public void applySetStatus() {
         this.setStyle("-fx-background-color: derive(#50c800, 50%); -fx-border-color: white;");
-        System.out.println("cardName = " + cardName.charAt(0));
         Text title = new Text(cardName.toUpperCase().charAt(0) + cardName.substring(1));
-        title.setStyle("-fx-fill: white;");
+        title.setStyle("-fx-fill: white; -fx-font-weight: bold;");
         StackPane.setAlignment(title, Pos.BOTTOM_CENTER);
         getChildren().add(title);
 

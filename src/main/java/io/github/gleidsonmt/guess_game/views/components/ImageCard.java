@@ -10,12 +10,14 @@ import javafx.scene.layout.*;
  */
 public class ImageCard extends Region {
 
-    private double width = 100;
-    private double height = 150;
+    private double width;
+    private double height;
     private Image avatar;
 
-    public ImageCard(Image avatar) {
+    public ImageCard(Image avatar, double width, double height) {
         this.avatar = avatar;
+        this.width = width;
+        this.height = height;
         setAvatar(avatar);
     }
 
@@ -31,7 +33,7 @@ public class ImageCard extends Region {
 
     public Background createBackground(String image) {
         return  new Background(
-                new BackgroundImage(Assets.getImage(image), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
+                new BackgroundImage(Assets.getImage(image, width, height), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
                         BackgroundPosition.CENTER, new BackgroundSize(width, height, true, true, true, false)));
     }
 }
